@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chess</title>
+    
+<style>
+.shadowed{
+	background-color:#337ab7;
+	cursor:pointer;
+}
+.shadowEnemy{
+	background-color:#a94442;
+	cursor:pointer;
+}
+.highlighter{
+	border:15.5px solid yellow;
+}
+.currentPiece{
+	background-color:yellow;
+	cursor:pointer;
+}
+.potentialSquare{
+	height:80px;
+	width:80px;
+	display:block;
+	margin-left:-16px;
+	background-color:#dff0d8;
+}
+.chessSquare{
+	border:1px solid #5bc0de;
+	height:80px;
+	width:80px;
+	padding-top:.2%;
+}
+.chessSquare:hover{
+	cursor:pointer;
+	background-color:#5bc0de;
+}
+.chessSquareSide{
+	border:1px solid black;
+	height:80px;
+	width:80px;
+	background-color:black;
+}
+.chessPiece{
+	padding:3%;
+	font-size:3em;
+}
+.chessPieceWhite{
+	padding-top:25px;
+	font-size:3em;
+	color:grey;
+}
+.chessPieceBlack{
+	padding-top:25px;
+	font-size:3em;
+	color:black;
+}
+#chessBoard{
+	
+}
+</style>
+	
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!--jQuery Link-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Core CSS 
+    <link href="libs/bootstrap.min.css" rel="stylesheet">
+    -->
+    
+    <!-- jQuery 
+    <script src="libs/jquery.min.js"></script>
+    -->
+
+    <!-- Bootstrap Core JavaScript 
+    <script src=".libs/bootstrap.min.js"></script>
+     -->
+    
+    <!-- Chess JavaScript -->
+    <script src="chess.js"></script>
+
+</head>
+
+<body>
+
+<div class="well-lg">
+<h4 title="Liars Dice">Chess</h4>
+
+<div class="well-lg">
+
+  <h3><span class="label label-default">Chess</span></h3>
+  
+  <br/>
+  
+	<div id="chessBoard" class="center-block text-center">
+		<div class="center-block">
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box11" onclick="javascript:whichPiece('box11')" class="chessSquare blackPiece col-xs-1 tower1B"><center><i id="x11" class="chessPieceBlack glyphicon glyphicon-tower"></i></center></div>
+				<div id="box12" onclick="javascript:whichPiece('box12')" class="chessSquare blackPiece col-xs-1 knight1B"><center><i id="x12" class="chessPieceBlack glyphicon glyphicon-knight"></i></center></div>
+				<div id="box13" onclick="javascript:whichPiece('box13')" class="chessSquare blackPiece col-xs-1 bishop1B"><center><i id="x13" class="chessPieceBlack glyphicon glyphicon-bishop"></i></center></div>
+				<div id="box14" onclick="javascript:whichPiece('box14')" class="chessSquare blackPiece col-xs-1 queenB"><center><i id="x14" class="chessPieceBlack glyphicon glyphicon-queen"></i></center></div>
+				<div id="box15" onclick="javascript:whichPiece('box15')" class="chessSquare blackPiece col-xs-1 kingB"><center><i id="x15" class="chessPieceBlack glyphicon glyphicon-king"></i></center></div>
+				<div id="box16" onclick="javascript:whichPiece('box16')" class="chessSquare blackPiece col-xs-1 bishop2B"><center><i id="x16" class="chessPieceBlack glyphicon glyphicon-bishop"></i></center></div>
+				<div id="box17" onclick="javascript:whichPiece('box17')" class="chessSquare blackPiece col-xs-1 knight2B"><center><i id="x17" class="chessPieceBlack glyphicon glyphicon-knight"></i></center></div>
+				<div id="box18" onclick="javascript:whichPiece('box18')" class="chessSquare blackPiece col-xs-1 tower2B"><center><i id="x18" class="chessPieceBlack glyphicon glyphicon-tower"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box21" onclick="javascript:whichPiece('box21')" class="chessSquare blackPiece col-xs-1 pawnStart1B"><center><i id="x21" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box22" onclick="javascript:whichPiece('box22')" class="chessSquare blackPiece col-xs-1 pawnStart2B"><center><i id="x22" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box23" onclick="javascript:whichPiece('box23')" class="chessSquare blackPiece col-xs-1 pawnStart3B"><center><i id="x23" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box24" onclick="javascript:whichPiece('box24')" class="chessSquare blackPiece col-xs-1 pawnStart4B"><center><i id="x24" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box25" onclick="javascript:whichPiece('box25')" class="chessSquare blackPiece col-xs-1 pawnStart5B"><center><i id="x25" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box26" onclick="javascript:whichPiece('box26')" class="chessSquare blackPiece col-xs-1 pawnStart6B"><center><i id="x26" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box27" onclick="javascript:whichPiece('box27')" class="chessSquare blackPiece col-xs-1 pawnStart7B"><center><i id="x27" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box28" onclick="javascript:whichPiece('box28')" class="chessSquare blackPiece col-xs-1 pawnStart8B"><center><i id="x28" class="chessPieceBlack glyphicon glyphicon-pawn"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box31" onclick="javascript:whichPiece('box31')" class="chessSquare blank col-xs-1"><center><i id="x31" class="chessPiece"></i></center></div>
+				<div id="box32" onclick="javascript:whichPiece('box32')" class="chessSquare blank col-xs-1"><center><i id="x32" class="chessPiece"></i></center></div>
+				<div id="box33" onclick="javascript:whichPiece('box33')" class="chessSquare blank col-xs-1"><center><i id="x33" class="chessPiece"></i></center></div>
+				<div id="box34" onclick="javascript:whichPiece('box34')" class="chessSquare blank col-xs-1"><center><i id="x34" class="chessPiece"></i></center></div>
+				<div id="box35" onclick="javascript:whichPiece('box35')" class="chessSquare blank col-xs-1"><center><i id="x35" class="chessPiece"></i></center></div>
+				<div id="box36" onclick="javascript:whichPiece('box36')" class="chessSquare blank col-xs-1"><center><i id="x36" class="chessPiece"></i></center></div>
+				<div id="box37" onclick="javascript:whichPiece('box37')" class="chessSquare blank col-xs-1"><center><i id="x37" class="chessPiece"></i></center></div>
+				<div id="box38" onclick="javascript:whichPiece('box38')" class="chessSquare blank col-xs-1"><center><i id="x38" class="chessPiece"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box41" onclick="javascript:whichPiece('box41')" class="chessSquare blank col-xs-1"><center><i id="x41" class="chessPiece"></i></center></div>
+				<div id="box42" onclick="javascript:whichPiece('box42')" class="chessSquare blank col-xs-1"><center><i id="x42" class="chessPiece"></i></center></div>
+				<div id="box43" onclick="javascript:whichPiece('box43')" class="chessSquare blank col-xs-1"><center><i id="x43" class="chessPiece"></i></center></div>
+				<div id="box44" onclick="javascript:whichPiece('box44')" class="chessSquare blank col-xs-1"><center><i id="x44" class="chessPiece"></i></center></div>
+				<div id="box45" onclick="javascript:whichPiece('box45')" class="chessSquare blank col-xs-1"><center><i id="x45" class="chessPiece"></i></center></div>
+				<div id="box46" onclick="javascript:whichPiece('box46')" class="chessSquare blank col-xs-1"><center><i id="x46" class="chessPiece"></i></center></div>
+				<div id="box47" onclick="javascript:whichPiece('box47')" class="chessSquare blank col-xs-1"><center><i id="x47" class="chessPiece"></i></center></div>
+				<div id="box48" onclick="javascript:whichPiece('box48')" class="chessSquare blank col-xs-1"><center><i id="x48" class="chessPiece"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box51" onclick="javascript:whichPiece('box51')" class="chessSquare blank col-xs-1"><center><i id="x51" class="chessPiece"></i></center></div>
+				<div id="box52" onclick="javascript:whichPiece('box52')" class="chessSquare blank col-xs-1"><center><i id="x52" class="chessPiece"></i></center></div>
+				<div id="box53" onclick="javascript:whichPiece('box53')" class="chessSquare blank col-xs-1"><center><i id="x53" class="chessPiece"></i></center></div>
+				<div id="box54" onclick="javascript:whichPiece('box54')" class="chessSquare blank col-xs-1"><center><i id="x54" class="chessPiece"></i></center></div>
+				<div id="box55" onclick="javascript:whichPiece('box55')" class="chessSquare blank col-xs-1"><center><i id="x55" class="chessPiece"></i></center></div>
+				<div id="box56" onclick="javascript:whichPiece('box56')" class="chessSquare blank col-xs-1"><center><i id="x56" class="chessPiece"></i></center></div>
+				<div id="box57" onclick="javascript:whichPiece('box57')" class="chessSquare blank col-xs-1"><center><i id="x57" class="chessPiece"></i></center></div>
+				<div id="box58" onclick="javascript:whichPiece('box58')" class="chessSquare blank col-xs-1"><center><i id="x58" class="chessPiece"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box61" onclick="javascript:whichPiece('box61')" class="chessSquare blank col-xs-1"><center><i id="x61" class="chessPiece"></i></center></div>
+				<div id="box62" onclick="javascript:whichPiece('box62')" class="chessSquare blank col-xs-1"><center><i id="x62" class="chessPiece"></i></center></div>
+				<div id="box63" onclick="javascript:whichPiece('box63')" class="chessSquare blank col-xs-1"><center><i id="x63" class="chessPiece"></i></center></div>
+				<div id="box64" onclick="javascript:whichPiece('box64')" class="chessSquare blank col-xs-1"><center><i id="x64" class="chessPiece"></i></center></div>
+				<div id="box65" onclick="javascript:whichPiece('box65')" class="chessSquare blank col-xs-1"><center><i id="x65" class="chessPiece"></i></center></div>
+				<div id="box66" onclick="javascript:whichPiece('box66')" class="chessSquare blank col-xs-1"><center><i id="x66" class="chessPiece"></i></center></div>
+				<div id="box67" onclick="javascript:whichPiece('box67')" class="chessSquare blank col-xs-1"><center><i id="x67" class="chessPiece"></i></center></div>
+				<div id="box68" onclick="javascript:whichPiece('box68')" class="chessSquare blank col-xs-1"><center><i id="x68" class="chessPiece"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box71" onclick="javascript:whichPiece('box71')" class="chessSquare whitePiece col-xs-1 pawnStart1W"><center><i id="x71" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box72" onclick="javascript:whichPiece('box72')" class="chessSquare whitePiece col-xs-1 pawnStart2W"><center><i id="x72" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box73" onclick="javascript:whichPiece('box73')" class="chessSquare whitePiece col-xs-1 pawnStart3W"><center><i id="x73" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box74" onclick="javascript:whichPiece('box74')" class="chessSquare whitePiece col-xs-1 pawnStart4W"><center><i id="x74" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box75" onclick="javascript:whichPiece('box75')" class="chessSquare whitePiece col-xs-1 pawnStart5W"><center><i id="x75" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box76" onclick="javascript:whichPiece('box76')" class="chessSquare whitePiece col-xs-1 pawnStart6W"><center><i id="x76" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box77" onclick="javascript:whichPiece('box77')" class="chessSquare whitePiece col-xs-1 pawnStart7W"><center><i id="x77" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div id="box78" onclick="javascript:whichPiece('box78')" class="chessSquare whitePiece col-xs-1 pawnStart8W"><center><i id="x78" class="chessPieceWhite glyphicon glyphicon-pawn"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+			<div class="col-xs-12">
+				<div class="chessSquareSide col-xs-2"></div>
+				<div id="box81" onclick="javascript:whichPiece('box81')" class="chessSquare whitePiece col-xs-1 tower1W"><center><i id="x81" class="chessPieceWhite glyphicon glyphicon-tower"></i></center></div>
+				<div id="box82" onclick="javascript:whichPiece('box82')" class="chessSquare whitePiece col-xs-1 knight1W"><center><i id="x82" class="chessPieceWhite glyphicon glyphicon-knight"></i></center></div>
+				<div id="box83" onclick="javascript:whichPiece('box83')" class="chessSquare whitePiece col-xs-1 bishop1W"><center><i id="x83" class="chessPieceWhite glyphicon glyphicon-bishop"></i></center></div>
+				<div id="box84" onclick="javascript:whichPiece('box84')" class="chessSquare whitePiece col-xs-1 queenW"><center><i id="x84" class="chessPieceWhite glyphicon glyphicon-queen"></i></center></div>
+				<div id="box85" onclick="javascript:whichPiece('box85')" class="chessSquare whitePiece col-xs-1 kingW"><center><i id="x85" class="chessPieceWhite glyphicon glyphicon-king"></i></center></div>
+				<div id="box86" onclick="javascript:whichPiece('box86')" class="chessSquare whitePiece col-xs-1 bishop2W"><center><i id="x86" class="chessPieceWhite glyphicon glyphicon-bishop"></i></center></div>
+				<div id="box87" onclick="javascript:whichPiece('box87')" class="chessSquare whitePiece col-xs-1 knight2W"><center><i id="x87" class="chessPieceWhite glyphicon glyphicon-knight"></i></center></div>
+				<div id="box88" onclick="javascript:whichPiece('box88')" class="chessSquare whitePiece col-xs-1 tower2W"><center><i id="x88" class="chessPieceWhite glyphicon glyphicon-tower"></i></center></div>
+				<div class="chessSquareSide col-xs-2"></div>
+			</div>
+		</div>
+	</div>
+    
+
+</div><!--END well-->
+</div>
+<br/><br/>
+<div class="col-xs-12">&nbsp;</div>
+
+</body>
+
+</html>
